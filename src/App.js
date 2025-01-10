@@ -27,10 +27,12 @@ import EditEventPage from "./pages/EditEventPage";
 import NewEventPage from "./pages/NewEventPage";
 import RootLayout from "./pages/Root";
 import EventsRootLayout from "./pages/EventsRoot";
+import ErrorPage from "./pages/ErrorPage";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true, // used to tell that this is the default page
