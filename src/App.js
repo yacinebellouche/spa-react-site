@@ -28,6 +28,7 @@ import NewEventPage from "./pages/NewEventPage";
 import RootLayout from "./pages/Root";
 import EventsRootLayout from "./pages/EventsRoot";
 import ErrorPage from "./pages/ErrorPage";
+//Keep the streak going 
 const router = createBrowserRouter([
   {
     path: "/",
