@@ -22,13 +22,15 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import EventsPage, { loader as eventsLoader } from "./pages/EventsPage";
-import EventDetailPage from "./pages/EventDetailPage";
+import EventDetailPage, {
+  loader as eventDetailLoader,
+} from "./pages/EventDetailPage";
 import EditEventPage from "./pages/EditEventPage";
 import NewEventPage from "./pages/NewEventPage";
 import RootLayout from "./pages/Root";
 import EventsRootLayout from "./pages/EventsRoot";
 import ErrorPage from "./pages/ErrorPage";
-//Keep the streak going 
+//Keep the streak going
 const router = createBrowserRouter([
   {
     path: "/",
@@ -48,8 +50,19 @@ const router = createBrowserRouter([
             element: <EventsPage />,
             loader: eventsLoader,
           },
-          { path: ":id", element: <EventDetailPage /> },
-          { path: ":id/edit", element: <EditEventPage /> },
+
+          {
+            path: ":id",
+            id: "event-detail",
+            loader: eventDetailLoader,
+            children: [
+              {
+                path: "",
+                element: <EventDetailPage />,
+              },
+              { path: "edit", element: <EditEventPage /> },
+            ],
+          },
           { path: "new", element: <NewEventPage /> },
         ],
       },
